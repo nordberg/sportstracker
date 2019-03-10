@@ -10,10 +10,10 @@ class PlayerRepository {
         private val counter = AtomicLong()
 
         private val players = listOf(
-            Player(id = counter.incrementAndGet(), firstName = "Marcus", lastName = "Nordberg"),
-            Player(id = counter.incrementAndGet(), firstName = "William", lastName = "Perkola"),
-            Player(id = counter.incrementAndGet(), firstName = "Anda", lastName = "Zhang"),
-            Player(id = counter.incrementAndGet(), firstName = "Martin", lastName = "Boberg")
+            Player(id = counter.incrementAndGet(), firstName = "Marcus", lastName = "Nordberg", elo = 1000),
+            Player(id = counter.incrementAndGet(), firstName = "William", lastName = "Perkola", elo = 1000),
+            Player(id = counter.incrementAndGet(), firstName = "Anda", lastName = "Zhang", elo = 1000),
+            Player(id = counter.incrementAndGet(), firstName = "Martin", lastName = "Boberg", elo = 1000)
         )
 
         fun players(): List<Player> {
