@@ -1,18 +1,20 @@
 package pingpongtracker.repositories
 
+import pingpongtracker.business.Elo
 import pingpongtracker.domain.Match
 import pingpongtracker.domain.Sport
 import java.util.concurrent.atomic.AtomicLong
+import javax.validation.constraints.Null
 
 class MatchRepository {
     companion object {
         private val counter = AtomicLong()
 
-        private val matches = listOf(
+        private val matches = mutableListOf(
             Match(
                 id = counter.incrementAndGet(),
-                team1 = listOf(PlayerRepository.findPlayerById(1)!!),
-                team2 = listOf(PlayerRepository.findPlayerById(2)!!),
+                team1 = listOf(1),
+                team2 = listOf(2),
                 scoreT1 = 1,
                 scoreT2 = 2,
                 sport = Sport.EIGHTBALL
@@ -20,16 +22,16 @@ class MatchRepository {
             ),
             Match(
                 id = counter.incrementAndGet(),
-                team1 = listOf(PlayerRepository.findPlayerById(2)!!),
-                team2 = listOf(PlayerRepository.findPlayerById(3)!!),
+                team1 = listOf(2),
+                team2 = listOf(3),
                 scoreT1 = 0,
                 scoreT2 = 2,
                 sport = Sport.PINGPONG
             ),
             Match(
                 id = counter.incrementAndGet(),
-                team1 = listOf(PlayerRepository.findPlayerById(1)!!),
-                team2 = listOf(PlayerRepository.findPlayerById(3)!!),
+                team1 = listOf(1),
+                team2 = listOf(3),
                 scoreT1 = 2,
                 scoreT2 = 1,
                 sport = Sport.PINGPONG
