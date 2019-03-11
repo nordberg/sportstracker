@@ -40,14 +40,28 @@ class MatchRepository {
             return matches
         }
 
-        fun findMatchById(id: Long): Match? {
-            return matches.find { it.id == id }
-        }
+        fun save(match: Match): Match? {
 
-        fun findMatchesBySport(sport: Sport): List<Match> {
-            return matches.filter {
-                it.sport == sport
+            val player1 = PlayerRepository.findPlayerById(match.team1.first())
+            val player2 = PlayerRepository.findPlayerById(match.team2.first())
+
+            if (player1 == null) {
+                return null
             }
+            if (player2 == null) {
+                return null
+            }
+
+            val newPlayerElos = Elo.calculateElo(p1 = player1, p2 = player2, match = match)
+
+            PlayerRepository.updatePlayer(player1, newPlayerElos.first)
+            PlayerRepository.updatePlayer(player2, newPlayerElos.second)
+
+            this.matches.add(match.copy(
+                id = counter.incrementAndGet()
+            ))
+
+            return match
         }
     }
 }

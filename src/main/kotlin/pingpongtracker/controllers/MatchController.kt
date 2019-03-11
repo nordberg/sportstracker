@@ -8,11 +8,16 @@ import java.util.concurrent.atomic.AtomicLong
 
 @RestController
 class MatchController {
-    val counter = AtomicLong()
-
-    @GetMapping("/matches/")
+    @GetMapping(produces = arrayOf("application/json"))
     fun matches(): List<Match> {
         return MatchRepository.matches()
     }
 
+    @PostMapping(
+        produces = arrayOf("application/json"),
+        consumes = arrayOf("application/json")
+    )
+    fun addMatch(@RequestBody match: Match): Match? {
+        return MatchRepository.save(match)
+    }
 }
