@@ -1,12 +1,11 @@
 package pingpongtracker.controllers
 
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 import pingpongtracker.domain.Match
 import pingpongtracker.repositories.MatchRepository
-import java.util.concurrent.atomic.AtomicLong
 
 @RestController
+@RequestMapping("/matches/")
 class MatchController {
     @GetMapping(produces = arrayOf("application/json"))
     fun matches(): List<Match> {
