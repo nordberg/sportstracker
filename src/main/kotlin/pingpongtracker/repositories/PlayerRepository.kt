@@ -9,19 +9,19 @@ class PlayerRepository {
 
         private val counter = AtomicLong()
 
-        private val players = listOf(
-            Player(id = counter.incrementAndGet(), firstName = "Marcus", lastName = "Nordberg", elo = 1000),
-            Player(id = counter.incrementAndGet(), firstName = "William", lastName = "Perkola", elo = 1000),
-            Player(id = counter.incrementAndGet(), firstName = "Anda", lastName = "Zhang", elo = 1000),
-            Player(id = counter.incrementAndGet(), firstName = "Martin", lastName = "Boberg", elo = 1000)
+        private val players = mutableMapOf(
+            counter.incrementAndGet() to Player(id = counter.get(), firstName = "Marcus", lastName = "Nordberg", elo = 1000),
+            counter.incrementAndGet() to Player(id = counter.get(), firstName = "William", lastName = "Perkola", elo = 1000),
+            counter.incrementAndGet() to Player(id = counter.get(), firstName = "Anda", lastName = "Zhang", elo = 1000),
+            counter.incrementAndGet() to Player(id = counter.get(), firstName = "Martin", lastName = "Boberg", elo = 1000)
         )
 
         fun players(): List<Player> {
-            return players
+            return players.values.toList()
         }
 
         fun findPlayerById(id: Long): Player? {
-            return players.find { it.id == id }
+            return players[id]
         }
     }
 }
