@@ -23,5 +23,11 @@ class PlayerRepository {
         fun findPlayerById(id: Long): Player? {
             return players[id]
         }
+
+        fun updatePlayer(player: Player, elo: Int) {
+            players[player.id] = player.copy(
+                elo = elo
+            )
+        }
     }
 }
