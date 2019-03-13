@@ -10,10 +10,10 @@ class PlayerRepository {
         private val counter = AtomicLong()
 
         private val players = mutableMapOf(
-            counter.incrementAndGet() to Player(id = counter.get(), firstName = "Marcus", lastName = "Nordberg", elo = 1000),
-            counter.incrementAndGet() to Player(id = counter.get(), firstName = "William", lastName = "Perkola", elo = 1000),
-            counter.incrementAndGet() to Player(id = counter.get(), firstName = "Anda", lastName = "Zhang", elo = 1000),
-            counter.incrementAndGet() to Player(id = counter.get(), firstName = "Martin", lastName = "Boberg", elo = 1000)
+            counter.incrementAndGet() to Player(id = counter.get(), firstName = "Marcus", lastName = "Nordberg", elo = (1500..2500).random()),
+            counter.incrementAndGet() to Player(id = counter.get(), firstName = "William", lastName = "Perkola", elo = (1500..2500).random()),
+            counter.incrementAndGet() to Player(id = counter.get(), firstName = "Anda", lastName = "Zhang", elo = (1500..2500).random()),
+            counter.incrementAndGet() to Player(id = counter.get(), firstName = "Martin", lastName = "Boberg", elo = (1500..2500).random())
         )
 
         fun players(): List<Player> {
