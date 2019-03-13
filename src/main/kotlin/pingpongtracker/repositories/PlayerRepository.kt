@@ -29,5 +29,11 @@ class PlayerRepository {
                 elo = elo
             )
         }
+
+        fun getTopPlayers(number: Int): List<Player> {
+            return this.players().sortedBy {
+                it.elo
+            }.reversed().take(number)
+        }
     }
 }
