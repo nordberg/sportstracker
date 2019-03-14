@@ -13,3 +13,17 @@ val elo2000Player = Player(
     lastName = "Elofsson2000",
     elo = 2000
 )
+
+val elo2200Player = Player(
+    id = 3L,
+    firstName = "Elo",
+    lastName = "Elofsson2200",
+    elo = 2200
+)
+
+val elo2100Player = Player(
+    id = 4L,
+    firstName = "Elo",
+    lastName = "Elofsson2100",
+    elo = 2100
+)
