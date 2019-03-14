@@ -10,9 +10,9 @@ class MatchRepository {
     companion object {
         private val counter = AtomicLong()
 
-        private val matches = mutableListOf(
-            Match(
-                id = counter.incrementAndGet(),
+        private val matches = mutableMapOf(
+            counter.incrementAndGet() to Match(
+                id = counter.get(),
                 team1 = listOf(1),
                 team2 = listOf(2),
                 scoreT1 = 1,
@@ -20,16 +20,16 @@ class MatchRepository {
                 sport = Sport.EIGHTBALL
 
             ),
-            Match(
-                id = counter.incrementAndGet(),
+            counter.incrementAndGet() to Match(
+                id = counter.get(),
                 team1 = listOf(2),
                 team2 = listOf(3),
                 scoreT1 = 0,
                 scoreT2 = 2,
                 sport = Sport.PINGPONG
             ),
-            Match(
-                id = counter.incrementAndGet(),
+            counter.incrementAndGet() to Match(
+                id = counter.get(),
                 team1 = listOf(1),
                 team2 = listOf(3),
                 scoreT1 = 2,
@@ -39,7 +39,7 @@ class MatchRepository {
         )
 
         fun matches(): List<Match> {
-            return matches
+            return matches.values.toList()
         }
 
         fun save(match: Match): Match? {
@@ -59,9 +59,7 @@ class MatchRepository {
             PlayerRepository.updatePlayer(player1, newPlayerElos.first)
             PlayerRepository.updatePlayer(player2, newPlayerElos.second)
 
-            this.matches.add(match.copy(
-                id = counter.incrementAndGet()
-            ))
+            this.matches[counter.incrementAndGet()] = match.copy(id = counter.get())
 
             return match
         }
