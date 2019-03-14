@@ -10,7 +10,6 @@ import java.util.concurrent.atomic.AtomicLong
 
 @RestController
 class PlayerController {
-    val counter = AtomicLong()
 
     @GetMapping("/players/")
     fun players(): List<Player> {

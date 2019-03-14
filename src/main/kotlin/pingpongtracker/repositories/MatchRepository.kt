@@ -4,7 +4,6 @@ import pingpongtracker.business.Elo
 import pingpongtracker.domain.Match
 import pingpongtracker.domain.Sport
 import java.util.concurrent.atomic.AtomicLong
-import javax.validation.constraints.Null
 
 class MatchRepository {
     companion object {
@@ -13,8 +12,8 @@ class MatchRepository {
         private val matches = mutableMapOf(
             counter.incrementAndGet() to Match(
                 id = counter.get(),
-                team1 = listOf(1),
-                team2 = listOf(2),
+                team1 = 1L,
+                team2 = 2L,
                 scoreT1 = 1,
                 scoreT2 = 2,
                 sport = Sport.EIGHTBALL
@@ -22,16 +21,16 @@ class MatchRepository {
             ),
             counter.incrementAndGet() to Match(
                 id = counter.get(),
-                team1 = listOf(2),
-                team2 = listOf(3),
+                team1 = 2L,
+                team2 = 3L,
                 scoreT1 = 0,
                 scoreT2 = 2,
                 sport = Sport.PINGPONG
             ),
             counter.incrementAndGet() to Match(
                 id = counter.get(),
-                team1 = listOf(1),
-                team2 = listOf(3),
+                team1 = 2L,
+                team2 = 4L,
                 scoreT1 = 2,
                 scoreT2 = 1,
                 sport = Sport.PINGPONG
@@ -43,21 +42,17 @@ class MatchRepository {
         }
 
         fun save(match: Match): Match? {
+            val team1 = TeamRepository.findTeamById(match.team1)
+            val team2 = TeamRepository.findTeamById(match.team2)
 
-            val player1 = PlayerRepository.findPlayerById(match.team1.first())
-            val player2 = PlayerRepository.findPlayerById(match.team2.first())
-
-            if (player1 == null) {
-                return null
-            }
-            if (player2 == null) {
-                return null
+            require(team1 != null && team2 != null) {
+                "Teams with ids ($team1, $team2) could not be found."
             }
 
-            val newPlayerElos = Elo.calculateElo(p1 = player1, p2 = player2, match = match)
+            val newTeamElos = Elo.calculateElo(t1 = team1, t2 = team2, match = match)
 
-            PlayerRepository.updatePlayer(player1, newPlayerElos.newEloPlayer1)
-            PlayerRepository.updatePlayer(player2, newPlayerElos.newEloPlayer2)
+            TeamRepository.updateTeam(team1, newTeamElos.newEloTeam1)
+            TeamRepository.updateTeam(team2, newTeamElos.newEloTeam2)
 
             this.matches[counter.incrementAndGet()] = match.copy(id = counter.get())
 
