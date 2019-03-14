@@ -23,7 +23,7 @@ class EloTest {
         val newEloT1 = 2403
         val newEloT2 = 1997
 
-        val expectedEloPair = Pair(newEloT1, newEloT2)
+        val expectedEloPair = Elo.Companion.NewEloPair(newEloT1, newEloT2)
         val resultEloPair = Elo.calculateElo(player1, player2, match)
 
         assertThat(resultEloPair).isEqualToComparingFieldByField(expectedEloPair)
@@ -46,7 +46,7 @@ class EloTest {
         val newEloT1 = 2371
         val newEloT2 = 2029
 
-        val expectedEloPair = Pair(newEloT1, newEloT2)
+        val expectedEloPair = Elo.Companion.NewEloPair(newEloT1, newEloT2)
         val resultEloPair = Elo.calculateElo(player1, player2, match)
 
         assertThat(resultEloPair).isEqualToComparingFieldByField(expectedEloPair)

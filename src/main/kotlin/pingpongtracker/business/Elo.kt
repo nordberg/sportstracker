@@ -7,13 +7,15 @@ import kotlin.math.roundToInt
 class Elo {
     companion object {
 
+        data class NewEloPair(val newEloPlayer1: Int, val newEloPlayer2: Int)
+
         private const val KFACTOR = 32
 
         fun kFactor(): Int {
             return this.KFACTOR
         }
 
-        fun calculateElo(p1: Player, p2: Player, match: Match): Pair<Int, Int> {
+        fun calculateElo(p1: Player, p2: Player, match: Match): NewEloPair {
             /**
              * Calculates the new Elo rating of two players
              */
@@ -25,7 +27,7 @@ class Elo {
             val newEloP1 = (p1.elo + this.kFactor()*(match.resultOfPlayer1() - expectedScoreP1)).roundToInt()
             val newEloP2 = (p2.elo + this.kFactor()*(match.resultOfPlayer2() - expectedScoreP2)).roundToInt()
 
-            return Pair(newEloP1, newEloP2)
+            return NewEloPair(newEloP1, newEloP2)
         }
     }
 }

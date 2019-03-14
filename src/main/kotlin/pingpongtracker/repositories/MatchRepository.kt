@@ -56,8 +56,8 @@ class MatchRepository {
 
             val newPlayerElos = Elo.calculateElo(p1 = player1, p2 = player2, match = match)
 
-            PlayerRepository.updatePlayer(player1, newPlayerElos.first)
-            PlayerRepository.updatePlayer(player2, newPlayerElos.second)
+            PlayerRepository.updatePlayer(player1, newPlayerElos.newEloPlayer1)
+            PlayerRepository.updatePlayer(player2, newPlayerElos.newEloPlayer2)
 
             this.matches[counter.incrementAndGet()] = match.copy(id = counter.get())
 
