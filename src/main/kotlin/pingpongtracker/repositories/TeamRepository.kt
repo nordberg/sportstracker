@@ -62,9 +62,9 @@ class TeamRepository {
             }
         }
 
-        fun updateTeam(team1: Team, newEloTeam1: Int) {
-            this.teams[team1.id] = team1.copy(
-                elo = newEloTeam1
+        fun updateTeam(team: Team, newEloTeam: Int) {
+            this.teams[team.id] = team.copy(
+                elo = newEloTeam
             )
         }
     }
