@@ -17,7 +17,7 @@ class EloTest {
         val team2 = Team(
             id = 2L,
             playerIds = setOf(elo2000Player.id),
-            elo = 2100
+            elo = 2000
         )
 
         val match = Match(
@@ -45,7 +45,7 @@ class EloTest {
         val team2 = Team(
             id = 2L,
             playerIds = setOf(elo2000Player.id),
-            elo = 2100
+            elo = 2000
         )
 
         val match = Match(
