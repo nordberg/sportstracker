@@ -62,10 +62,23 @@ class TeamRepository {
             }
         }
 
+        fun findTeamsOfSize(size: Int): List<Team> {
+            return this.teams.values.filter {
+                it.playerIds.size == size
+            }
+        }
+
         fun updateTeam(team: Team, newEloTeam: Int) {
             this.teams[team.id] = team.copy(
                 elo = newEloTeam
             )
+        }
+
+        fun getTopTeams(number: Int, teamSize: Int): List<Team> {
+            return this.findTeamsOfSize(teamSize)
+                .sortedBy { it.elo }
+                .asReversed()
+                .take(number)
         }
     }
 }
