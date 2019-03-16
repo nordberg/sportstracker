@@ -11,12 +11,12 @@ class EloTest {
     fun `test calculation of new elos where better player wins`() {
         val team1 = Team(
             id = 1L,
-            playerIds = setOf(elo2400Player),
+            playerIds = setOf(elo2400Player.id),
             elo = 2400
         )
         val team2 = Team(
             id = 2L,
-            playerIds = setOf(elo2000Player),
+            playerIds = setOf(elo2000Player.id),
             elo = 2100
         )
 
@@ -39,12 +39,12 @@ class EloTest {
     fun `test calculation of new elos where worse player wins`() {
         val team1 = Team(
             id = 1L,
-            playerIds = setOf(elo2400Player),
+            playerIds = setOf(elo2400Player.id),
             elo = 2400
         )
         val team2 = Team(
             id = 2L,
-            playerIds = setOf(elo2000Player),
+            playerIds = setOf(elo2000Player.id),
             elo = 2100
         )
 
