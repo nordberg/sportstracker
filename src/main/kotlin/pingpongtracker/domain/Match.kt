@@ -1,12 +1,15 @@
 package pingpongtracker.domain
 
+import java.time.LocalDate
+
 data class Match(
     val id: Long,
     val team1: Long,
     val team2: Long,
     val sport: Sport,
     val scoreT1: Short,
-    val scoreT2: Short
+    val scoreT2: Short,
+    val date: LocalDate
 ) {
 
     fun resultOfTeam1(): Double {
