@@ -1,3 +1,5 @@
+package fixtures
+
 import pingpongtracker.domain.Team
 
 val elo2000TeamOnePlayer = Team(
@@ -6,10 +8,10 @@ val elo2000TeamOnePlayer = Team(
     elo = 2000
 )
 
-val elo2100TeamOnePlayer = Team(
+val elo2400TeamOnePlayer = Team(
     id = 2L,
     playerIds = setOf(2L),
-    elo = 2100
+    elo = 2400
 )
 
 val elo2000TeamTwoPlayers = Team(

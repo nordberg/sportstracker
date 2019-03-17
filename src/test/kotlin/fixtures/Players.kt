@@ -1,3 +1,5 @@
+package fixtures
+
 import pingpongtracker.domain.Player
 
 val elo2400Player = Player(
