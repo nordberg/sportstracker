@@ -3,6 +3,7 @@ package pingpongtracker.repositories
 import pingpongtracker.business.Elo
 import pingpongtracker.domain.Match
 import pingpongtracker.domain.Sport
+import java.time.LocalDate
 import java.util.concurrent.atomic.AtomicLong
 
 class MatchRepository {
@@ -16,7 +17,8 @@ class MatchRepository {
                 team2 = 2L,
                 scoreT1 = 1,
                 scoreT2 = 2,
-                sport = Sport.EIGHTBALL
+                sport = Sport.EIGHTBALL,
+                date = LocalDate.of(2018,1,1)
 
             ),
             counter.incrementAndGet() to Match(
@@ -25,7 +27,8 @@ class MatchRepository {
                 team2 = 3L,
                 scoreT1 = 0,
                 scoreT2 = 2,
-                sport = Sport.PINGPONG
+                sport = Sport.PINGPONG,
+                date = LocalDate.of(2018,1,1)
             ),
             counter.incrementAndGet() to Match(
                 id = counter.get(),
@@ -33,7 +36,8 @@ class MatchRepository {
                 team2 = 4L,
                 scoreT1 = 2,
                 scoreT2 = 1,
-                sport = Sport.PINGPONG
+                sport = Sport.PINGPONG,
+                date = LocalDate.of(2018,1,1)
             )
         )
 
