@@ -24,6 +24,10 @@ class PlayerRepository {
             return players[id]
         }
 
+        fun findPlayersById(ids: List<Long>): List<Player> {
+            return players().filter { it.id in ids }
+        }
+
         fun updatePlayer(player: Player, elo: Int) {
             players[player.id] = player.copy(
                 elo = elo
