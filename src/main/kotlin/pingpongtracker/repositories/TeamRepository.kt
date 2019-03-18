@@ -74,6 +74,24 @@ class TeamRepository {
             )
         }
 
+        fun createTeam(playerIds: Set<Long>): Team {
+            playerIds.forEach {
+                requireNotNull(PlayerRepository.findPlayerById(it))
+            }
+
+            val newTeamElo = PlayerRepository.findPlayersById(playerIds.toList())
+                .sumBy { it.elo }
+                .div(playerIds.size)
+
+            this.teams[counter.incrementAndGet()] = Team(
+                id = counter.get(),
+                playerIds = playerIds,
+                elo = newTeamElo
+            )
+
+            return this.teams[counter.get()]!!
+        }
+
         fun getTopTeams(number: Int, teamSize: Int): List<Team> {
             return this.findTeamsOfSize(teamSize)
                 .sortedBy { it.elo }
