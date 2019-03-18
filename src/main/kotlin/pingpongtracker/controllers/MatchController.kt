@@ -5,14 +5,18 @@ import pingpongtracker.domain.Match
 import pingpongtracker.repositories.MatchRepository
 
 @RestController
-@RequestMapping("/matches/")
+@RequestMapping("/matches")
 class MatchController {
-    @GetMapping(produces = arrayOf("application/json"))
+    @GetMapping(
+        "/",
+        produces = arrayOf("application/json")
+    )
     fun matches(): List<Match> {
         return MatchRepository.matches()
     }
 
     @PostMapping(
+        "/",
         produces = arrayOf("application/json"),
         consumes = arrayOf("application/json")
     )
