@@ -10,7 +10,7 @@ val matchWithT1AsWinner = Match(
     team2 = 3L,
     scoreT1 = 3,
     scoreT2 = 1,
-    date = LocalDate.of(2018,1,1),
+    date = LocalDate.of(2018, 1, 1),
     sport = Sport.PINGPONG
 )
 
@@ -20,6 +20,6 @@ val matchWithT2AsWinner = Match(
     team2 = 3L,
     scoreT1 = 1,
     scoreT2 = 3,
-    date = LocalDate.of(2018,1,1),
+    date = LocalDate.of(2018, 1, 1),
     sport = Sport.PINGPONG
 )

@@ -5,4 +5,3 @@ enum class Sport {
     EIGHTBALL,
     NINEBALL
 }
-

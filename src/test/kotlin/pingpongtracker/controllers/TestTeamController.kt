@@ -4,7 +4,7 @@ import org.assertj.core.api.Java6Assertions.assertThat
 import org.junit.Test
 import pingpongtracker.repositories.TeamRepository
 
-class TestTeamController{
+class TestTeamController {
 
     @Test
     fun `get top teams`() {

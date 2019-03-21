@@ -1,4 +1,7 @@
-import fixtures.*
+import fixtures.elo2000TeamOnePlayer
+import fixtures.elo2400TeamOnePlayer
+import fixtures.matchWithT1AsWinner
+import fixtures.matchWithT2AsWinner
 import org.assertj.core.api.Java6Assertions.assertThat
 import org.junit.Test
 import pingpongtracker.business.Elo

@@ -18,7 +18,7 @@ class MatchRepository {
                 scoreT1 = 1,
                 scoreT2 = 2,
                 sport = Sport.EIGHTBALL,
-                date = LocalDate.of(2018,1,1)
+                date = LocalDate.of(2018, 1, 1)
 
             ),
             counter.incrementAndGet() to Match(
@@ -28,7 +28,7 @@ class MatchRepository {
                 scoreT1 = 0,
                 scoreT2 = 2,
                 sport = Sport.PINGPONG,
-                date = LocalDate.of(2018,1,1)
+                date = LocalDate.of(2018, 1, 1)
             ),
             counter.incrementAndGet() to Match(
                 id = counter.get(),
@@ -37,7 +37,7 @@ class MatchRepository {
                 scoreT1 = 2,
                 scoreT2 = 1,
                 sport = Sport.PINGPONG,
-                date = LocalDate.of(2018,1,1)
+                date = LocalDate.of(2018, 1, 1)
             )
         )
 
