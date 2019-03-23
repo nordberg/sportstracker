@@ -40,11 +40,3 @@ dependencies {
     testCompile("io.kotlintest:kotlintest-assertions:3.0.2")
     testCompile("io.kotlintest:kotlintest-runner-junit5:3.0.2")
 }
-
-task ktlint(type: JavaExec, group: "verification") {
-    description = "Check Kotlin code style."
-    classpath = configurations.ktlint
-    main = "com.github.shyiko.ktlint.Main"
-    args "src/**/*.kt"
-}
-check.dependsOn ktlint
