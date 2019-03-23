@@ -10,8 +10,8 @@ jobs:
           name: Make owner
           command: sudo chmod +x ./gradlew
       - run:
-          name: Run ktLint
-          command: ./gradlew ktlint
+          name: Run ktlintCheck
+          command: ./gradlew ktlintCheck
       - run:
           name: Build application
           command: ./gradlew build
