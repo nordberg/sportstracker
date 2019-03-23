@@ -12,3 +12,18 @@ jobs:
       - run:
           name: Run ktLint
           command: ./gradlew ktlint
+      - run:
+          name: Build application
+          command: ./gradlew build
+  test:
+    working_directory: ~/pingpongtracker
+    docker:
+      - image: circleci/android:api-28-alpha
+    steps:
+      - checkout
+      - run:
+          name: Make owner
+          command: sudo chmod +x ./gradlew
+      - run:
+          name: Run unit tests
+          command: ./gradlew test
