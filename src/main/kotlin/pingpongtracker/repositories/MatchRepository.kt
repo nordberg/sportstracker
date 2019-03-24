@@ -41,6 +41,13 @@ class MatchRepository {
             )
         )
 
+        fun matchesByPlayerId(playerId: Long): List<Match> {
+            val teamIds = TeamRepository.findTeamContainingPlayerWithId(playerId).map { it.id }
+            return matches.values.filter {
+                it.team1 in teamIds || it.team2 in teamIds
+            }
+        }
+
         fun matches(): List<Match> {
             return matches.values.toList()
         }
