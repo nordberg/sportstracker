@@ -39,5 +39,13 @@ class PlayerRepository {
                 it.elo
             }.reversed().take(number)
         }
+
+        fun save(player: Player): Player? {
+            this.players[counter.incrementAndGet()] = player.copy(
+                id = counter.get()
+            )
+
+            return this.players[counter.get()]
+        }
     }
 }
